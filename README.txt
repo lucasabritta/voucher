@@ -1,5 +1,3 @@
-# voucher
-Task to manage a voucher pool microservice based in PHP.
 This task was created using mysql and php and tested using XAMPP.
 The DB was created into phpmyadmin and the sql to create the tables can be found under sql/voucher.sql.
 A postman collection was created to test all functionality from scratch. The postman collection and environment can be found under postman folder.

@@ -1,0 +1,297 @@
+{
+	"info": {
+		"name": "voucher",
+		"_postman_id": "1f81099d-c78c-12af-336f-c8c3b256c8c9",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createRecipient1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"tests[\"Status response is sucess\"] = jsonData.status === \"sucess\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"action\":\"createRecipient\",\n\t\"name\": \"name1\",\n\t\"email\": \"{{email1}}\"\n}"
+				},
+				"url": {
+					"raw": "{{location}}/",
+					"host": [
+						"{{location}}"
+					],
+					"path": [
+						""
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "createRecipient2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"tests[\"Status response is sucess\"] = jsonData.status === \"sucess\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"action\":\"createRecipient\",\n\t\"name\": \"name2\",\n\t\"email\": \"email2@email.com\"\n}"
+				},
+				"url": {
+					"raw": "{{location}}/",
+					"host": [
+						"{{location}}"
+					],
+					"path": [
+						""
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "createSpecialOffer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"tests[\"Status response is sucess\"] = jsonData.status === \"sucess\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"action\":\"createSpecialOffer\",\n\t\"name\": \"{{offer1}}\",\n\t\"discount\": 10.5\n}"
+				},
+				"url": {
+					"raw": "{{location}}/",
+					"host": [
+						"{{location}}"
+					],
+					"path": [
+						""
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "generateVoucherCode",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"tests[\"Status response is sucess\"] = jsonData.status === \"sucess\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"action\":\"generateVoucherCode\",\n\t\"offerName\": \"{{offer1}}\",\n\t\"expirationDate\": \"2017-12-12\"\n}"
+				},
+				"url": {
+					"raw": "{{location}}/",
+					"host": [
+						"{{location}}"
+					],
+					"path": [
+						""
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getUserValidVoucher",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"code\", jsonData.vouchers[0].code);\r",
+							"\r",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"action\":\"getUserValidVoucher\",\n\t\"email\": \"{{email1}}\"\n}"
+				},
+				"url": {
+					"raw": "{{location}}/",
+					"host": [
+						"{{location}}"
+					],
+					"path": [
+						""
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "validateVoucherCode",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"tests[\"Status response is sucess\"] = jsonData.status === \"sucess\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"action\":\"validateVoucherCode\",\n\t\"email\": \"{{email1}}\",\n\t\"code\": \"{{code}}\"\n}"
+				},
+				"url": {
+					"raw": "{{location}}/",
+					"host": [
+						"{{location}}"
+					],
+					"path": [
+						""
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getEmptyUserValidVoucher",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"tests[\"No valid voucher\"] = jsonData.vouchers === NULL;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"action\":\"getUserValidVoucher\",\n\t\"email\": \"{{email1}}\"\n}"
+				},
+				"url": {
+					"raw": "{{location}}/",
+					"host": [
+						"{{location}}"
+					],
+					"path": [
+						""
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
